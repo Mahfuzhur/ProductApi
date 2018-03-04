@@ -32,7 +32,7 @@ namespace ProductApi.Controllers
         {
             return _productContext.ProductItems.AsNoTracking().ToList();
         }
-        [HttpGet("{id}/{shopId}")]
+        [HttpGet("{id}/{shopId}", Name = "GetProduct")]
         public IActionResult GetById(long id, int shopId)
         {
             var product = _productContext.ProductItems.FirstOrDefault(p => p.Id==id && p.ShopId == shopId);
@@ -41,6 +41,40 @@ namespace ProductApi.Controllers
                 return NotFound();
             }
             return new ObjectResult(product);
+        }
+        [HttpPost]
+        public IActionResult Create([FromBody] ProductItem product)
+        {
+            if (product == null)
+            {
+                return BadRequest();
+            }
+            _productContext.ProductItems.Add(product);
+            _productContext.SaveChanges();
+            return CreatedAtRoute("GetProduct", new { 
+                id = product.Id,
+                shopId = product.ShopId
+            },product);
+        }
+        [HttpPut("{id}/{shopId}")]
+        public IActionResult Update(long id, int shopId, [FromBody] ProductItem product)
+        {
+            if(product == null || product.Id !=id || product.ShopId != shopId)
+            {
+                return BadRequest();
+            }
+            var pro = _productContext.ProductItems.FirstOrDefault(p => p.Id == id && p.ShopId == shopId);
+            if(pro == null)
+            {
+                return NotFound();
+            }
+            pro.Price = product.Price;
+            pro.ProductName = product.ProductName;
+            pro.Quantity = product.Quantity;
+            pro.Discount = product.Discount;
+            _productContext.ProductItems.Update(pro);
+            _productContext.SaveChanges();
+            return new NoContentResult();
         }
     }
 }
