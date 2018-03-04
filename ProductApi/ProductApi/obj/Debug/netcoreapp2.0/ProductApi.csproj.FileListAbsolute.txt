@@ -1,0 +1,11 @@
+C:\Users\ASUS\source\repos\ProductApi\ProductApi\ProductApi\bin\Debug\netcoreapp2.0\ProductApi.deps.json
+C:\Users\ASUS\source\repos\ProductApi\ProductApi\ProductApi\bin\Debug\netcoreapp2.0\ProductApi.runtimeconfig.json
+C:\Users\ASUS\source\repos\ProductApi\ProductApi\ProductApi\bin\Debug\netcoreapp2.0\ProductApi.runtimeconfig.dev.json
+C:\Users\ASUS\source\repos\ProductApi\ProductApi\ProductApi\bin\Debug\netcoreapp2.0\ProductApi.dll
+C:\Users\ASUS\source\repos\ProductApi\ProductApi\ProductApi\obj\Debug\netcoreapp2.0\ProductApi.csprojResolveAssemblyReference.cache
+C:\Users\ASUS\source\repos\ProductApi\ProductApi\ProductApi\obj\Debug\netcoreapp2.0\ProductApi.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\source\repos\ProductApi\ProductApi\ProductApi\obj\Debug\netcoreapp2.0\ProductApi.AssemblyInfoInputs.cache
+C:\Users\ASUS\source\repos\ProductApi\ProductApi\ProductApi\obj\Debug\netcoreapp2.0\ProductApi.AssemblyInfo.cs
+C:\Users\ASUS\source\repos\ProductApi\ProductApi\ProductApi\bin\Debug\netcoreapp2.0\ProductApi.pdb
+C:\Users\ASUS\source\repos\ProductApi\ProductApi\ProductApi\obj\Debug\netcoreapp2.0\ProductApi.dll
+C:\Users\ASUS\source\repos\ProductApi\ProductApi\ProductApi\obj\Debug\netcoreapp2.0\ProductApi.pdb
