@@ -20,6 +20,7 @@ namespace ProductApi.Controllers
             if (productContext.ProductItems.Count() == 0)
             {
                 _productContext.ProductItems.Add(new ProductItem { ShopId = 1, ProductName = "Cola", Price = 18, Quantity = 100 });
+               // _productContext.ProductItems.Add(new ProductItem { ShopId = 1, ProductName = "Cola1", Price = 18, Quantity = 500 });
                 _productContext.ProductItems.Add(new ProductItem { ShopId = 2, ProductName = "Cola", Price = 16, Quantity = 10 });
                 _productContext.ProductItems.Add(new ProductItem { ShopId = 3, ProductName = "Cola", Price = 20, Quantity = 120 });
 
@@ -28,10 +29,20 @@ namespace ProductApi.Controllers
             }
         }
         [HttpGet]
-        public IEnumerable<ProductItem> GetAll()
+        public IActionResult Test()
         {
-            return _productContext.ProductItems.AsNoTracking().ToList();
+            var product = _productContext.ProductItems.AsNoTracking().ToList();
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return View();
         }
+        //[HttpGet]
+        //public IEnumerable<ProductItem> GetAll()
+        //{
+        //    return _productContext.ProductItems.AsNoTracking().ToList();
+        //}
         [HttpGet("{id}/{shopId}", Name = "GetProduct")]
         public IActionResult GetById(long id, int shopId)
         {
@@ -42,6 +53,29 @@ namespace ProductApi.Controllers
             }
             return new ObjectResult(product);
         }
+
+        [HttpGet("{shopId}")]
+        public IActionResult GetByShopId(int shopId)
+        {
+            var product = _productContext.ProductItems.Where(p => p.ShopId == shopId);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            //return new ObjectResult(product);
+            return Json(product);
+        }
+
+        //[HttpGet("{shopId}")]
+        //public IActionResult GetByShopId( int shopId)
+        //{
+        //    var product = _productContext.ProductItems.Where(p => p.ShopId == shopId);
+        //    if (product == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return Json(product);
+        //}
         [HttpPost]
         public IActionResult Create([FromBody] ProductItem product)
         {
